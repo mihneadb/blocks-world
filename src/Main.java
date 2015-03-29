@@ -64,6 +64,7 @@ public class Main {
 
         System.out.println("From " + world);
         System.out.println("To " + targetWorld);
+        System.out.println();
 
         Solver solver = new Solver(world, targetWorld);
 
@@ -78,7 +79,7 @@ public class Main {
                 System.out.println("Applying " + action);
                 System.out.println("To " + world);
                 System.out.println("Got " + newWorld);
-                System.out.println("");
+                System.out.println();
             }
 
             world = newWorld;
