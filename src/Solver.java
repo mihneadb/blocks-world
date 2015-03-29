@@ -136,6 +136,9 @@ public class Solver {
         return solution;
     }
 
+    /**
+     * Heuristic for A*. The amount of predicates in `world` that are not part of `targetWorld`.
+     */
     private int solutionDistance(ArrayList<Predicate> world,
                                        ArrayList<Predicate> targetWorld) {
         int contained = 0;
