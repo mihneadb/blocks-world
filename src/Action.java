@@ -16,6 +16,10 @@ public class Action {
         this.arg2 = arg2;
     }
 
+    public Action(String name, Block arg1) {
+        this(name, arg1, null);
+    }
+
     /**
      * Find what changes applying `this` would imply.
      * @return Pair of what to remove and what to add.
@@ -49,10 +53,6 @@ public class Action {
         }
 
         return new Pair<ArrayList<Predicate>, ArrayList<Predicate>>(toRemove, toAdd);
-    }
-
-    public Action(String name, Block arg1) {
-        this(name, arg1, null);
     }
 
     @Override
