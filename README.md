@@ -11,6 +11,7 @@ Example run:
 ```
 From [on(B, A), ontable(A), ontable(C), ontable(D), clear(B), clear(C), clear(D), armempty()]
 To [on(C, A), on(B, D), ontable(A), ontable(D), clear(C), clear(B), armempty()]
+
 Applying unstack(B, A)
 To [on(B, A), ontable(A), ontable(C), ontable(D), clear(B), clear(C), clear(D), armempty()]
 Got [ontable(A), ontable(C), ontable(D), clear(C), clear(D), hold(B), clear(A)]
