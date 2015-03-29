@@ -11,6 +11,9 @@ public class Solver {
         this.targetWorld = new ArrayList<Predicate>(targetWorld);
     }
 
+    /**
+     * Runs A* and finds the list of actions that need to be executed to get to `targetWorld`.
+     */
     public ArrayList<Action> findSolution() {
         PriorityQueue<ProblemState> open = new PriorityQueue<ProblemState>();
 
@@ -38,6 +41,9 @@ public class Solver {
         return makeSolution(solutionState);
     }
 
+    /**
+     * Applies given action to given world. Returns a new world.
+     */
     public ArrayList<Predicate> performAction(ArrayList<Predicate> world, Action action) {
         ArrayList<Predicate> newWorld = new ArrayList<Predicate>();
         newWorld.addAll(world);
@@ -52,6 +58,9 @@ public class Solver {
         return newWorld;
     }
 
+    /**
+     * Get a list of all the possible actions that `world` allows.
+     */
     private ArrayList<Action> getOptions(ArrayList<Predicate> world) {
         ArrayList<Action> options = new ArrayList<Action>();
         boolean isArmEmpty = false;
@@ -125,6 +134,9 @@ public class Solver {
         return options;
     }
 
+    /**
+     * Construct the list of actions having found the solution node.
+     */
     private ArrayList<Action> makeSolution(ProblemState end) {
         ArrayList<Action> solution = new ArrayList<Action>();
         ProblemState iter = end;
