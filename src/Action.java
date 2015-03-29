@@ -51,19 +51,6 @@ public class Action {
         return new Pair<ArrayList<Predicate>, ArrayList<Predicate>>(toRemove, toAdd);
     }
 
-    public Action getOpposite() {
-        if (name.equals(STACK)) {
-            return new Action(UNSTACK, arg1, arg2);
-        }
-        if (name.equals(UNSTACK)) {
-            return new Action(STACK, arg1, arg2);
-        }
-        if (name.equals(PICKUP)) {
-            return new Action(PUTDOWN, arg1);
-        }
-        return new Action(PICKUP, arg1);
-    }
-
     public Action(String name, Block arg1) {
         this(name, arg1, null);
     }
