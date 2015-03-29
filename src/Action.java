@@ -16,7 +16,10 @@ public class Action {
         this.arg2 = arg2;
     }
 
-    // fst = what to remove, snd = what to add
+    /**
+     * Find what changes applying `this` would imply.
+     * @return Pair of what to remove and what to add.
+     */
     public Pair<ArrayList<Predicate>, ArrayList<Predicate>> apply() {
         ArrayList<Predicate> toRemove = new ArrayList<Predicate>();
         ArrayList<Predicate> toAdd = new ArrayList<Predicate>();
