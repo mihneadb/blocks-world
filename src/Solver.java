@@ -149,6 +149,6 @@ public class Solver {
 
     private boolean worldEquals(ArrayList<Predicate> world,
                                 ArrayList<Predicate> targetWorld) {
-        return solutionDistance(world, targetWorld) == 0 && world.size() == targetWorld.size();
+        return world.containsAll(targetWorld) && targetWorld.containsAll(world);
     }
 }
