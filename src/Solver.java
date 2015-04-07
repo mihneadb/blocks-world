@@ -11,6 +11,10 @@ public class Solver {
         this.targetWorld = new ArrayList<Predicate>(targetWorld);
     }
 
+    public void setStartWorld(ArrayList<Predicate> startWorld) {
+        this.startWorld = startWorld;
+    }
+
     /**
      * Runs A* and finds the list of actions that need to be executed to get to `targetWorld`.
      */
@@ -29,7 +33,7 @@ public class Solver {
                 ProblemState successor = new ProblemState(best,newWorld, action,best.g + 1,
                         solutionDistance(newWorld, targetWorld));
 
-                if (worldEquals(newWorld, targetWorld)) {
+                if (isSolution(newWorld, targetWorld)) {
                     found = true;
                     solutionState = successor;
                     break;
@@ -162,8 +166,8 @@ public class Solver {
         return world.size() - contained;
     }
 
-    private boolean worldEquals(ArrayList<Predicate> world,
-                                ArrayList<Predicate> targetWorld) {
+    protected boolean isSolution(ArrayList<Predicate> world,
+                                 ArrayList<Predicate> targetWorld) {
         return world.containsAll(targetWorld) && targetWorld.containsAll(world);
     }
 }

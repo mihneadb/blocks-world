@@ -88,4 +88,32 @@ public class Action {
 
         return ok;
     }
+
+    /**
+     * Two actions are in conflict if they deal with the same block.
+     */
+    public boolean inConflictWith(Action other) {
+        if (!equals(other)) {
+            ArrayList<Block> args1 = getArgs();
+            ArrayList<Block> args2 = other.getArgs();
+            for (Block b: args1) {
+                if (args2.contains(b)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
+
+    public ArrayList<Block> getArgs() {
+        ArrayList<Block> args = new ArrayList<Block>();
+        if (arg1 != null) {
+            args.add(arg1);
+        }
+        if (arg2 != null) {
+            args.add(arg2);
+        }
+        return args;
+    }
 }
