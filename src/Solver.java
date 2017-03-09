@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+b import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
@@ -6,6 +6,10 @@ public class Solver {
     private ArrayList<Predicate> startWorld;
     private ArrayList<Predicate> targetWorld;
 
+    /*
+        Constructor for the Solver, this takes the parameters of the initial world
+        and the target world that needs to be achieved from the initial world.
+    */
     public Solver(ArrayList<Predicate> startWorld, ArrayList<Predicate> targetWorld) {
         this.startWorld = new ArrayList<Predicate>(startWorld);
         this.targetWorld = new ArrayList<Predicate>(targetWorld);
@@ -162,6 +166,12 @@ public class Solver {
         return world.size() - contained;
     }
 
+    /*
+        Compares all values in target world to initial world to check for full
+        equality. This method compares if world contains targetWorld and if 
+        targetWorld contains world. This ensures full containment of the worlds 
+        and accuracy in world equality.
+    */
     private boolean worldEquals(ArrayList<Predicate> world,
                                 ArrayList<Predicate> targetWorld) {
         return world.containsAll(targetWorld) && targetWorld.containsAll(world);

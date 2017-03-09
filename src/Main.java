@@ -1,10 +1,15 @@
-import java.util.*;
+import java.u1til.*;
 
 public class Main {
 
     static boolean DEBUG = true;
 
+    /*
+        Main function, acts as the model of the program. Variables that running program
+        is based on are declared here, and initiates the solver.
+    */
     public static void main(String[] args) throws Exception {
+        // Blocks declared A through G
         Block A = new Block("A");
         Block B = new Block("B");
         Block C = new Block("C");
@@ -13,7 +18,10 @@ public class Main {
         Block F = new Block("F");
         Block G = new Block("G");
 
-        // Simple setup.
+        /*
+            creates initial world with blocks placed as a template of the initial
+            world requirements
+        */
         ArrayList<Predicate> world = new ArrayList<Predicate>(Arrays.asList(
                 new Predicate(Predicate.ON, B, A),
                 new Predicate(Predicate.ONTABLE, A),
@@ -25,6 +33,10 @@ public class Main {
                 new Predicate(Predicate.ARMEMPTY)
         ));
 
+        /*
+            The target world that must be achieved from the initial world. With the changes
+            that will be applied.
+        */
         ArrayList<Predicate> targetWorld = new ArrayList<Predicate>(Arrays.asList(
                 new Predicate(Predicate.ON, C, A),
                 new Predicate(Predicate.ON, B, D),
@@ -66,12 +78,20 @@ public class Main {
         System.out.println("To " + targetWorld);
         System.out.println();
 
+        /*
+            Initiate the solver and then find the solution to transform the 
+            initial world. This solution finding is timed and recorded.
+        */
         Solver solver = new Solver(world, targetWorld);
 
         long now = System.currentTimeMillis();
         ArrayList<Action> solution = solver.findSolution();
         long now2 = System.currentTimeMillis();
 
+        /*  
+            Once solution is found, the solutions actions are performed accordingly.
+            A seperate solver is used to perform actions to ensure modularity.
+        */
         for (Action action: solution) {
             ArrayList<Predicate> newWorld = solver.performAction(world, action);
 
