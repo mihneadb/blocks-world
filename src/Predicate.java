@@ -1,28 +1,53 @@
 public class Predicate implements Comparable {
+    /*
+        The private variables that can only be accessed directly
+        through the class.
+    */
     private String name;
     private Block arg1;
     private Block arg2;
 
+    /*
+        The states of the predicate. Static as they are not changed.
+    */
     public static String ON = "on";
     public static String ONTABLE = "ontable";
     public static String CLEAR = "clear";
     public static String HOLD = "hold";
     public static String ARMEMPTY = "armempty";
 
+    /*
+        The constructor to create a predicate based on 2 arguments given
+        with the name. Three constructors are made for this class so that 
+        the same class can be used under different criteria.
+    */
     public Predicate(String name, Block arg1, Block arg2) {
         this.name = name;
         this.arg1 = arg1;
         this.arg2 = arg2;
     }
 
+    /*
+        The constructor to create a predicate based on 1 arguments given
+        with the name.
+    */
     public Predicate(String name, Block arg1) {
         this(name, arg1, null);
     }
 
+    /*
+        The constructor to create a predicate based on 0 arguments given
+        with the name.
+    */
     public Predicate(String name) {
         this(name, null, null);
     }
 
+    /*
+        This function is used to convert arguments to string format as
+        "name(arg1, arg2)". This method uses a StringBuilder to put together
+        the string by adding the non-null components in the required format.
+    */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -39,18 +64,33 @@ public class Predicate implements Comparable {
         return sb.toString();
     }
 
+    /*
+        The name is private so the getter function returns the name of the Predicate.
+    */
     public String getName() {
         return name;
     }
 
+    /*
+        The arg1 is private so the getter function returns the arg1 of the Predicate.
+    */
     public Block getArg1() {
         return arg1;
     }
 
+    /*
+        The arg2 is private so the getter function returns the arg2 of the Predicate.
+    */
     public Block getArg2() {
         return arg2;
     }
 
+    /*
+        This function compares the object in the parameter with 'this'
+        object. It compares the global variables one by one and stores
+        the equality in the variable 'ok' which it returns. This method
+        is used to ensure all variables are equal otherwise it is false.
+    */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Predicate)) {
@@ -69,6 +109,11 @@ public class Predicate implements Comparable {
         return ok;
     }
 
+    /*
+        This function compares 'this' predicates value to a given object's.
+        only compares arguments if they are non null. because otherwise they 
+        do not exist.
+    */
     @Override
     public int compareTo(Object o) {
         Predicate other = (Predicate) o;
